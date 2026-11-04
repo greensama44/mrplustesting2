@@ -1,12 +1,52 @@
+/* ------------------------------------------------------------------
+   MR Plus brand tokens
+   Use the semantic tokens (--bg, --text, --accent…) in components,
+   not the raw palette, so light/dark mode keeps working.
+   ------------------------------------------------------------------ */
 :root {
-  --bg: #ffffff;
-  --fg: #111111;
+  /* Primary palette */
+  --mega-red: #E10600;
+  --deep-red: #B90032;
+  --orange: #FF4B25;
+  --reward-yellow: #FFD900;
+
+  /* Supporting palette */
+  --off-white: #F7F7F5;
+  --charcoal: #202020;
+  --soft-pink: #FCE8E6;
+
+  /* Semantic tokens (light) */
+  --bg: var(--off-white);
+  --surface: #FFFFFF;
+  --surface-tint: var(--soft-pink);
+  --text: var(--charcoal);
+  --text-muted: #5A5A5A;
+  --border: #E4E2DE;
+
+  --accent: var(--mega-red);          /* buttons, links, key highlights */
+  --accent-hover: var(--deep-red);
+  --on-accent: #FFFFFF;               /* text on red: 4.97:1 */
+  --highlight: var(--reward-yellow);  /* rewards, badges, deals */
+  --on-highlight: var(--charcoal);    /* text on yellow: 11.8:1 */
+  --energy: var(--orange);            /* gradients, large accents only */
+  --on-energy: var(--charcoal);       /* text on orange: 4.9:1 */
+
+  --brand-gradient: linear-gradient(135deg, var(--deep-red), var(--mega-red) 55%, var(--orange));
+
+  --radius: 14px;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0b0b0b;
-    --fg: #ededed;
+    --bg: #161616;
+    --surface: var(--charcoal);
+    --surface-tint: #2E1A1A;
+    --text: var(--off-white);
+    --text-muted: #B5B3AE;
+    --border: #333333;
+    --accent: #FF3B2F;        /* Mega Red lifted slightly for dark backgrounds */
+    --accent-hover: var(--orange);
   }
 }
 
@@ -15,14 +55,71 @@
 html, body {
   margin: 0;
   background: var(--bg);
-  color: var(--fg);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
-.home {
-  min-height: 100vh;
-  display: grid;
-  place-content: center;
-  text-align: center;
-  padding: 16px;
+a { color: var(--accent); }
+a:hover { color: var(--accent-hover); }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s;
 }
+.btn-primary { background: var(--mega-red); color: var(--on-accent); }
+.btn-primary:hover { background: var(--deep-red); color: var(--on-accent); }
+.btn-reward { background: var(--reward-yellow); color: var(--on-highlight); }
+.btn-reward:hover { background: #F2CC00; color: var(--on-highlight); }
+.btn-outline { border-color: currentColor; color: var(--text); background: transparent; }
+.btn-outline:hover { color: var(--accent); }
+
+/* Home placeholder */
+.hero {
+  background: var(--brand-gradient);
+  color: #FFFFFF;
+  padding: 96px 16px 80px;
+  text-align: center;
+}
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.hero p { margin: 0 auto 28px; max-width: 34rem; font-size: 1.125rem; opacity: .95; }
+.hero .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.hero .btn-outline { color: #FFFFFF; }
+.hero .btn-outline:hover { color: var(--reward-yellow); }
+
+.palette {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 56px 16px 72px;
+}
+.palette h2 { margin: 0 0 4px; font-size: 1.5rem; }
+.palette > p { margin: 0 0 24px; color: var(--text-muted); }
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+.swatch {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.swatch .chip { height: 88px; }
+.swatch .meta { padding: 10px 12px; font-size: .875rem; }
+.swatch .meta strong { display: block; }
+.swatch .meta span { color: var(--text-muted); font-family: ui-monospace, monospace; }
