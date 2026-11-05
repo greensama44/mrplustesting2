@@ -20,13 +20,22 @@ export default function ThrowPills({ items }: { items: string[] }) {
     const W = () => el.clientWidth;
     const H = () => el.clientHeight;
 
-    bodies.current = items.map((_, i) => {
+    // Start from where each pill sits in the static wrap, then let them drop.
+    const start = items.map((_, i) => {
       const node = els.current[i];
-      const w = node?.offsetWidth ?? 120;
-      const h = node?.offsetHeight ?? 44;
       return {
-        x: Math.random() * Math.max(1, W() - w),
-        y: reduce ? H() - h - (i % 3) * (h + 4) : -h - i * 60,
+        left: node?.offsetLeft ?? 0,
+        top: node?.offsetTop ?? 0,
+        w: node?.offsetWidth ?? 120,
+        h: node?.offsetHeight ?? 44,
+      };
+    });
+    el.classList.add("is-live");
+
+    bodies.current = start.map(({ left, top, w, h }, i) => {
+      return {
+        x: Math.min(Math.max(0, left), Math.max(0, W() - w)),
+        y: reduce ? top : top - H() - i * 40,
         vx: (Math.random() - 0.5) * 4,
         vy: 0,
         w,
