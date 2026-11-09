@@ -949,11 +949,7 @@ body.lock{overflow:hidden}
    ===================================================================== */
 body{background:#fff}
 .hdr nav.nav a.on,.hdr.solid nav.nav a.on{background:var(--red);color:#fff}
-.hdr{color:var(--char);background:#fff;box-shadow:0 1px 0 var(--line)}
-.hdr .icon-btn{border-color:var(--line)}
-.hdr nav.nav a:hover{background:var(--off)}
-.hdr .hacts>.btn-y{border-color:var(--char)}
-.wrapx{max-width:1360px;margin:0 auto;padding:0 32px}
+.wrapx{max-width:1240px;margin:0 auto;padding:0 24px}
 .k{font-size:12px;font-weight:700;letter-spacing:.02em;color:rgba(32,32,32,.55)}
 .h2x{font-family:var(--head);font-weight:800;font-size:clamp(22px,2vw,28px);letter-spacing:-.02em;line-height:1.15}
 .rowh{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:20px}
@@ -1043,7 +1039,7 @@ body{background:#fff}
 
 /* directory */
 .dir2{display:grid;grid-template-columns:240px minmax(0,1fr);gap:40px;align-items:start}
-.side{position:sticky;top:156px}
+.side{position:sticky;top:96px}
 .side h3{font-size:16px;font-weight:700;padding-bottom:12px}
 .flist{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .flist button{display:flex;justify-content:space-between;align-items:center;border:0;background:none;padding:11px 0;font-size:15px;color:var(--char);text-align:left;border-bottom:1px solid var(--line)}
@@ -1106,7 +1102,6 @@ body{background:#fff}
 }
 @media (max-width:820px){
   .wrapx{padding:0 16px}
-  .subnav{top:66px;margin-top:66px}
   .subnav .wrapx{height:52px;gap:14px}
   .subnav b{display:none}
   .ssearch{display:none}
@@ -1267,6 +1262,28 @@ body{background:var(--off)}
 @media (max-width:820px){.bgrid6 .bt:nth-child(n+9){display:none}.sh h1{font-size:40px}}
 .sh .btn-o .ic{background:#fff;color:var(--char)}
 
+/* v4: no sub-nav bar; header sits over the hero like Mega Loyalty */
+.sh{padding:140px 0 110px}
+.snav{position:relative;z-index:5;margin-top:-34px}
+.snav-g{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border-radius:999px;padding:6px;box-shadow:0 18px 40px -18px rgba(32,32,32,.35)}
+.snav .tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.snav .tabs::-webkit-scrollbar{display:none}
+.snav .tabs a{flex-shrink:0;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--char);text-decoration:none;transition:background .2s,color .2s}
+.snav .tabs a:hover{background:var(--char);color:#fff}
+.snav .tabs a.hot{background:var(--yellow)}
+.snav .tabs a.hot:hover{background:var(--char);color:var(--yellow)}
+.snav .ssearch{display:flex;width:280px;height:44px}
+.blk{padding-top:72px}
+@media (max-width:820px){
+  .sh{padding:100px 0 84px}
+  .snav{margin-top:-28px}
+  .snav-g{flex-direction:column;align-items:stretch;border-radius:24px;gap:6px}
+  .snav .ssearch{display:flex;width:auto;order:-1}
+  .snav .tabs a{min-height:40px;padding:0 14px;font-size:11px}
+  .blk{padding-top:52px}
+}
+.sh h1{font-size:clamp(34px,4.4vw,60px);line-height:1;letter-spacing:-.03em}.mh h1{font-size:clamp(32px,4vw,56px)}
+
 /* =====================================================================
    MERCH STORE + PRODUCT PAGE (shared shop styles)
    ===================================================================== */
@@ -1316,7 +1333,7 @@ body{background:var(--off)}
 
 /* toolbar */
 #shop{padding-top:40px}
-.tbar{position:sticky;top:136px;z-index:20;background:var(--off);padding:12px 0;margin-bottom:18px}
+.tbar{position:sticky;top:76px;z-index:20;background:var(--off);padding:12px 0;margin-bottom:18px}
 .tbar .wrapx{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .cchips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;min-width:0}
 .cchips::-webkit-scrollbar{display:none}
@@ -1337,7 +1354,7 @@ body{background:var(--off)}
 
 /* ---------- product page ---------- */
 .pdp-g{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;align-items:start}
-.gal{display:grid;grid-template-columns:76px minmax(0,1fr);gap:14px;position:sticky;top:156px}
+.gal{display:grid;grid-template-columns:76px minmax(0,1fr);gap:14px;position:sticky;top:96px}
 .thumbs{display:flex;flex-direction:column;gap:10px}
 .thumbs button{border:2px solid transparent;border-radius:14px;overflow:hidden;padding:0;background:var(--pink,#FCE8E6);aspect-ratio:1;transition:border-color .2s}
 .thumbs button[aria-pressed="true"]{border-color:var(--char)}
@@ -1407,7 +1424,7 @@ body{background:var(--off)}
   .mh{padding:28px 0 40px}
   .mh-g{grid-template-columns:1fr;gap:28px}
   .pview{transform:none}
-  .tbar{top:118px}
+  .tbar{top:66px}
   .tbar .wrapx{flex-direction:column;align-items:stretch;gap:10px}
   .tr{justify-content:space-between}
   .pgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
@@ -1437,6 +1454,18 @@ body{background:var(--off)}
   .mprice s{font-size:12px;color:rgba(32,32,32,.45)}
 }
 @media (max-width:820px){body[data-page=product] .fl{bottom:84px}}
+
+/* v4: no sub-nav bar */
+.mh{padding-top:120px}
+.pdp{padding-top:76px}
+.tr .ssearch{display:flex;width:220px;height:40px;background:#fff;border:2px solid var(--char)}
+@media (max-width:1080px){.tr .ssearch{width:170px}}
+@media (max-width:820px){
+  .mh{padding-top:92px}
+  .pdp{padding-top:66px}
+  .tr{flex-wrap:wrap}
+  .tr .ssearch{display:flex;width:100%;order:-1}
+}
 </style>
 </head>
 <body data-page="product">
@@ -1454,7 +1483,7 @@ body{background:var(--off)}
   </div>
   <nav class="mnav" id="mnav" aria-label="Mobile"><a href="loyalty.html">Mega Loyalty</a><a href="savings.html" class="on" aria-current="page">Mega Savings</a><a href="index.html#plans">Plus</a><a href="index.html#tipping">Tipping</a><a href="index.html#community">Community</a><a href="#" data-auth="login">Log in</a><a href="#join" data-auth="join" class="btn btn-y" data-auth="join">Join free</a></nav>
 </header>
-<div class="subnav"><div class="wrapx"><b>Mega Savings</b><nav aria-label="Mega Savings"><a href="savings.html">Home</a><a href="savings.html#directory">Gift cards</a><a href="savings.html#directory">Cashback</a><a href="savings.html#directory">Dining</a><a href="merch.html" class="on" aria-current="page">Merch store</a><a href="savings.html#directory">Mobile</a><a href="savings.html#directory">All brands</a></nav><label class="ssearch"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span class="sr">Search products</span><input class="js-q" type="search" placeholder="Search products"></label></div></div>
+
 <main id="main" class="pdp">
 <div class="wrapx">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="savings.html">Mega Savings</a><span>/</span><a href="merch.html">Merch store</a><span>/</span><a id="crB" href="merch.html"></a></nav>
@@ -1615,7 +1644,7 @@ body{background:var(--off)}
   const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 
   /* Header, menu, toast, confetti */
-  const hdr=$("#hdr");hdr.classList.add("solid");
+  const hdr=$("#hdr"),hero=$(".mh"),onScroll=()=>{if(!hero){hdr.classList.add("solid");return}const h=hero.offsetHeight;hdr.classList.toggle("solid",scrollY>h-70);document.body.classList.toggle("on-hero",scrollY<h*.6)};onScroll();addEventListener("scroll",onScroll,{passive:true});
   const bg=$("#burger"),mn=$("#mnav");bg.addEventListener("click",()=>{const o=mn.classList.toggle("open");bg.setAttribute("aria-expanded",o)});$$("a",mn).forEach(a=>a.addEventListener("click",()=>{mn.classList.remove("open");bg.setAttribute("aria-expanded","false")}));
   const toast=$("#toast");let tt;const say=html=>{toast.innerHTML=html;toast.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove("on"),2600)};
   function confetti(el,n){if(reduce)return;const r=el.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2,cols=["#E10600","#FFD900","#FF4B25","#B90032","#fff"];
