@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 // The site pages are standalone HTML files in /public while the design is
 // being tested. These rewrites serve them at clean URLs.
-const pages = ["loyalty", "savings", "merch", "product", "plus", "prize"];
+const pages = ["loyalty", "savings", "merch", "product", "plus", "prize", "giftcard"];
 
 const nextConfig: NextConfig = {
   async rewrites() {
